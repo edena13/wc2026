@@ -27,6 +27,23 @@ position_mapping = {
     "ST": "FWD"
 }
 
+def add_position_group(df):
+    df = df.copy()
+
+    df["primary_position"] = (
+        df["position"]
+        .str.split(",")
+        .str[0]
+        .str.strip()
+    )
+
+    df["position_group"] = (
+        df["primary_position"]
+        .map(position_mapping)
+    )
+
+    return df
+
 def squad_rating(players):
     
     squad_requirements = {
@@ -43,7 +60,7 @@ def squad_rating(players):
         selected_players = []
 
         for pos, n_players in squad_requirements.items():
-            pos_players = country_players[country_players["position"] == pos]
+            pos_players = country_players[country_players["position_group"] == pos]
             if len(pos_players) == 0:
                 continue
             elif len(pos_players) != 0 and len(pos_players) < n_players:
@@ -51,6 +68,9 @@ def squad_rating(players):
             else:
                 top_players = pos_players.nlargest(n_players, "ovr")
             selected_players.append(top_players)
+        
+        if len(selected_players) == 0:
+            continue
 
         squad = pd.concat(selected_players)
         squad_rating = squad["ovr"].mean()
