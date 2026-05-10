@@ -49,11 +49,11 @@ def squad_rating(players):
             elif len(pos_players) != 0 and len(pos_players) < n_players:
                 top_players = pos_players
             else:
-                top_players = pos_players.nlargest(n_players, "overall")
+                top_players = pos_players.nlargest(n_players, "ovr")
             selected_players.append(top_players)
 
         squad = pd.concat(selected_players)
-        squad_rating = squad["overall"].mean()
+        squad_rating = squad["ovr"].mean()
 
         team_ratings.append({"country": country, "squad_rating": squad_rating, "squad_size": len(squad)})
 
