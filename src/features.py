@@ -30,15 +30,8 @@ position_mapping = {
 def add_position_group(df):
     df = df.copy()
 
-    df["primary_position"] = (
-        df["position"]
-        .str.split(",")
-        .str[0]
-        .str.strip()
-    )
-
     df["position_group"] = (
-        df["primary_position"]
+        df["position"]
         .map(position_mapping)
     )
 
@@ -72,8 +65,8 @@ def squad_rating(players):
         if len(selected_players) == 0:
             continue
 
-        squad = pd.concat(selected_players)
-        squad_rating = squad["ovr"].mean()
+        squad = pd.concat(selected_players) # combine the selected players for each position into a single df
+        squad_rating = squad["ovr"].mean() # calculate average
 
         team_ratings.append({"country": country, "squad_rating": squad_rating, "squad_size": len(squad)})
 
