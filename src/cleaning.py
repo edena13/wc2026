@@ -19,6 +19,9 @@ players = pd.read_csv(Path(path2) / "players_info.csv")
 BASE_DIR = Path(__file__).resolve().parent.parent
 wc2026_draw = pd.read_csv(BASE_DIR / "data" / "wc2026_draw.csv")
 
+# List of countries in WC2026
+wc2026_countries = wc2026_draw["country"].unique().tolist()
+
 def clean_results(df):
     df = df.copy()
     df = df.drop_duplicates()
@@ -45,6 +48,9 @@ def clean_players(df):
 
     # Filter for male players only
     df = df[df["gender"] == "M"]
+
+    # Filter for players from WC2026 countries
+    df = df[df["nationality"].isin(wc2026_countries)]
 
     # Country mapping to fix inconsistencies in country names between datasets
     country_mapping = {
