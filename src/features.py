@@ -37,9 +37,10 @@ def add_position_group(df):
 
     return df
 
-def squad_rating(players):
+def squad_rating(players, fill_rating=50):
     
-    squad_requirements = {
+    total_requirements = 26 # the maximum and usual number of players in a World Cup squad
+    squad_requirements = { # the typical distribution of players in a World Cup squad by position group
         "GK": 3,
         "DEF": 9,
         "MID": 9,
@@ -62,12 +63,23 @@ def squad_rating(players):
                 top_players = pos_players.nlargest(n_players, "ovr")
             selected_players.append(top_players)
         
+        # Handling countries with zero rated players
         if len(selected_players) == 0:
+            team_ratings.append({
+                "country": country,
+                "squad_rating": fill_rating,
+                "squad_size": 0,
+                "missing_players": total_requirements
+            })
+
             continue
 
         squad = pd.concat(selected_players) # combine the selected players for each position into a single df
-        squad_rating = squad["ovr"].mean() # calculate average
 
-        team_ratings.append({"country": country, "squad_rating": squad_rating, "squad_size": len(squad)})
+        missing_players = total_requirements - len(squad)
+        total_rating = squad["ovr"].sum() + (missing_players * fill_rating) # add fill_rating for missing players
+        squad_rating = total_rating / total_requirements # calculate average
+
+        team_ratings.append({"country": country, "squad_rating": squad_rating, "squad_size": len(squad), "missing_players": missing_players})
 
     return pd.DataFrame(team_ratings)
