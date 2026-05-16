@@ -15,6 +15,7 @@ path = kagglehub.dataset_download("martj42/international-football-results-from-1
 path2 = kagglehub.dataset_download("akshyakumarkc/fifa-25-player-ratings")
 dataset_path = Path(path)
 results = pd.read_csv(dataset_path / "results.csv")
+former_names = pd.read_csv(dataset_path / "former_names.csv")
 players = pd.read_csv(Path(path2) / "players_info.csv")
 BASE_DIR = Path(__file__).resolve().parent.parent
 wc2026_draw = pd.read_csv(BASE_DIR / "data" / "wc2026_draw.csv")
@@ -50,6 +51,15 @@ def clean_results(df):
     # Converting home_score and away_score to integers
     df["home_score"] = df["home_score"].astype(int)
     df["away_score"] = df["away_score"].astype(int)
+
+    # Map former country names to current names
+    former_names_mapping = dict(zip(former_names["former"], former_names["current"]))
+    df["home_team"] = df["home_team"].replace(former_names_mapping)
+    df["away_team"] = df["away_team"].replace(former_names_mapping)
+
+    # Map country names to ensure consistency across datasets
+    df["home_team"] = df["home_team"].replace(country_mapping)
+    df["away_team"] = df["away_team"].replace(country_mapping)
 
     # Adding match result and goal difference features
     df["match_result"] = df.apply(get_match_result, axis=1)
