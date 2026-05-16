@@ -18,9 +18,24 @@ results = pd.read_csv(dataset_path / "results.csv")
 players = pd.read_csv(Path(path2) / "players_info.csv")
 BASE_DIR = Path(__file__).resolve().parent.parent
 wc2026_draw = pd.read_csv(BASE_DIR / "data" / "wc2026_draw.csv")
+elo_ratings = pd.read_csv(BASE_DIR / "data" /"fifa_ranking-2026-04-01.csv")
 
 # List of countries in WC2026
 wc2026_countries = wc2026_draw["country"].unique().tolist()
+
+# Country mapping to fix inconsistencies in country names between datasets
+country_mapping = {
+    "Holland": "Netherlands",
+    "Côte d'Ivoire": "Ivory Coast",
+    "USA": "United States",
+    "Korea Republic": "South Korea",
+    "Cape Verde Islands": "Cape Verde",
+    "Congo DR": "DR Congo",
+    "Czechia": "Czech Republic",
+    "Türkiye": "Turkey",
+    "IR Iran": "Iran",
+    "Cabo Verde": "Cape Verde"
+}
 
 def clean_results(df):
     df = df.copy()
@@ -49,20 +64,13 @@ def clean_players(df):
     # Filter for male players only
     df = df[df["gender"] == "M"]
 
+    # Map country names
+    df["nationality"] = df["nationality"].replace(country_mapping)
+
     # Filter for players from WC2026 countries
     df = df[df["nationality"].isin(wc2026_countries)]
 
-    # Country mapping to fix inconsistencies in country names between datasets
-    country_mapping = {
-        "Holland": "Netherlands",
-        "Côte d'Ivoire": "Ivory Coast",
-        "USA": "United States",
-        "Korea Republic": "South Korea",
-        "Cape Verde Islands": "Cape Verde",
-        "Congo DR": "DR Congo"
-    }
-    # Apply country mapping to the players dataset
-    df["nationality"] = df["nationality"].replace(country_mapping)
+    # Add position group feature
     df = add_position_group(df)
 
     return df
@@ -77,11 +85,27 @@ def clean_wc2026_draw(df):
 
     return df
 
+def clean_elo(df):
+    df = df.copy()
+    df = df.drop_duplicates()
+
+    # Convert rank_date to datetime
+    df["rank_date"] = pd.to_datetime(df["rank_date"], errors="coerce")
+
+    # Map country names
+    df["country_full"] = df["country_full"].replace(country_mapping)
+
+    # Filter for participating countries
+    df = df[df["country_full"].isin(wc2026_countries)]
+
+    return df
+
 # Create and save cleaned datasets
 results = clean_results(results)
 players = clean_players(players)
 wc2026_draw = clean_wc2026_draw(wc2026_draw)
-
+elo = clean_elo(elo_ratings)
 results.to_csv(BASE_DIR / "data" / "processed" / "results_clean.csv", index=False)
 players.to_csv(BASE_DIR / "data" / "processed" / "players_clean.csv", index=False)
 wc2026_draw.to_csv(BASE_DIR / "data" / "processed" / "wc2026_draw_clean.csv", index=False)
+elo.to_csv(BASE_DIR / "data" / "processed" / "elo_clean.csv", index=False)

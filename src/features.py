@@ -49,7 +49,10 @@ def squad_rating(players, fill_rating=50):
 
     team_ratings = []
 
-    for country in players["nationality"].unique():
+    countries = players["nationality"].unique()
+    countries = np.append(countries, "Qatar") # Add Qatar as they are missing from the players dataset
+
+    for country in countries:
         country_players = players[players["nationality"] == country]
         selected_players = []
 
