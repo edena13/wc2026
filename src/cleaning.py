@@ -106,7 +106,7 @@ def clean_elo(df):
     df["country_full"] = df["country_full"].replace(country_mapping)
 
     # Filter for participating countries
-    df = df[df["country_full"].isin(wc2026_countries)]
+    # df = df[df["country_full"].isin(wc2026_countries)]
 
     return df
 
