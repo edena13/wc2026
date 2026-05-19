@@ -37,15 +37,9 @@ def add_position_group(df):
 
     return df
 
-def squad_rating(players, fill_rating=50):
+def team_rating(players, requirements, rating_name, fill_rating=50):
     
-    total_requirements = 26 # the maximum and usual number of players in a World Cup squad
-    squad_requirements = { # the typical distribution of players in a World Cup squad by position group
-        "GK": 3,
-        "DEF": 9,
-        "MID": 9,
-        "FWD": 5
-    }
+    total_requirements = sum(requirements.values()) 
 
     team_ratings = []
 
@@ -56,11 +50,11 @@ def squad_rating(players, fill_rating=50):
         country_players = players[players["nationality"] == country]
         selected_players = []
 
-        for pos, n_players in squad_requirements.items():
+        for pos, n_players in requirements.items():
             pos_players = country_players[country_players["position_group"] == pos]
             if len(pos_players) == 0:
                 continue
-            elif len(pos_players) != 0 and len(pos_players) < n_players:
+            elif len(pos_players) < n_players:
                 top_players = pos_players
             else:
                 top_players = pos_players.nlargest(n_players, "ovr")
@@ -70,8 +64,8 @@ def squad_rating(players, fill_rating=50):
         if len(selected_players) == 0:
             team_ratings.append({
                 "country": country,
-                "squad_rating": fill_rating,
-                "squad_size": 0,
+                "avg_rating": fill_rating,
+                "team_size": 0,
                 "missing_players": total_requirements
             })
 
@@ -81,8 +75,8 @@ def squad_rating(players, fill_rating=50):
 
         missing_players = total_requirements - len(squad)
         total_rating = squad["ovr"].sum() + (missing_players * fill_rating) # add fill_rating for missing players
-        squad_rating = total_rating / total_requirements # calculate average
+        avg_rating = total_rating / total_requirements # calculate average
 
-        team_ratings.append({"country": country, "squad_rating": squad_rating, "squad_size": len(squad), "missing_players": missing_players})
+        team_ratings.append({"country": country, "avg_rating": avg_rating, "team_size": len(squad), "missing_players": missing_players})
 
     return pd.DataFrame(team_ratings)
