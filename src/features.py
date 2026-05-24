@@ -80,3 +80,15 @@ def team_rating(players, requirements, rating_name, fill_rating=50):
         team_ratings.append({"country": country, "avg_rating": avg_rating, "team_size": len(squad), "missing_players": missing_players})
 
     return pd.DataFrame(team_ratings)
+
+def assign_tournament_weight(tournament):
+    if tournament == "FIFA World Cup":
+        return 5
+    elif tournament in ["UEFA Euro", "Copa América", "African Cup of Nations", "AFC Asian Cup", "Gold Cup"]:
+        return 4
+    elif tournament == "FIFA World Cup qualification":
+        return 3
+    elif tournament == "Friendly":
+        return 1
+    else:
+        return 2
