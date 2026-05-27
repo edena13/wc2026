@@ -12,11 +12,11 @@ from features import (
 
 # Loading Datasets
 path = kagglehub.dataset_download("martj42/international-football-results-from-1872-to-2017")
-path2 = kagglehub.dataset_download("akshyakumarkc/fifa-25-player-ratings")
+path2 = kagglehub.dataset_download("rovnez/fc-26-fifa-26-player-data")
 dataset_path = Path(path)
 results = pd.read_csv(dataset_path / "results.csv")
 former_names = pd.read_csv(dataset_path / "former_names.csv")
-players = pd.read_csv(Path(path2) / "players_info.csv")
+players = pd.read_csv(Path(path2) / "FC26_20250921.csv")
 BASE_DIR = Path(__file__).resolve().parent.parent
 wc2026_draw = pd.read_csv(BASE_DIR / "data" / "wc2026_draw.csv")
 elo_ratings = pd.read_csv(BASE_DIR / "data" /"fifa_ranking-2026-04-01.csv")
@@ -71,14 +71,27 @@ def clean_players(df):
     df = df.copy()
     df = df.drop_duplicates()
 
-    # Filter for male players only
-    df = df[df["gender"] == "M"]
+    # Retain only important columns from the players dataset
+    df = df[["player_id", "short_name", "overall", "player_positions", "nationality_name"]]
+
+    # Rename nationality column
+    df.rename(columns={"nationality_name": "nationality"}, inplace=True)
 
     # Map country names
     df["nationality"] = df["nationality"].replace(country_mapping)
 
     # Filter for players from WC2026 countries
     df = df[df["nationality"].isin(wc2026_countries)]
+
+    # Clean player_positions column to retain only the primary position
+    df["player_positions"] = (
+        df["player_positions"]
+        .str.split(",")
+        .str[0]
+    )
+
+    # Rename position column
+    df.rename(columns={"player_positions": "position"}, inplace=True)
 
     # Add position group feature
     df = add_position_group(df)

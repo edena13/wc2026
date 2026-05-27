@@ -44,7 +44,6 @@ def team_rating(players, requirements, rating_name, fill_rating=50):
     team_ratings = []
 
     countries = players["nationality"].unique()
-    countries = np.append(countries, "Qatar") # Add Qatar as they are missing from the players dataset
 
     for country in countries:
         country_players = players[players["nationality"] == country]
@@ -57,7 +56,7 @@ def team_rating(players, requirements, rating_name, fill_rating=50):
             elif len(pos_players) < n_players:
                 top_players = pos_players
             else:
-                top_players = pos_players.nlargest(n_players, "ovr")
+                top_players = pos_players.nlargest(n_players, "overall")
             selected_players.append(top_players)
         
         # Handling countries with zero rated players
@@ -74,7 +73,7 @@ def team_rating(players, requirements, rating_name, fill_rating=50):
         squad = pd.concat(selected_players) # combine the selected players for each position into a single df
 
         missing_players = total_requirements - len(squad)
-        total_rating = squad["ovr"].sum() + (missing_players * fill_rating) # add fill_rating for missing players
+        total_rating = squad["overall"].sum() + (missing_players * fill_rating) # add fill_rating for missing players
         avg_rating = total_rating / total_requirements # calculate average
 
         team_ratings.append({"country": country, "avg_rating": avg_rating, "team_size": len(squad), "missing_players": missing_players})
