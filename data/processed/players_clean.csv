@@ -779,6 +779,7 @@ player_id,short_name,overall,position,nationality,position_group
 236461,J. Mateta,82,ST,France,FWD
 243630,J. David,82,ST,Canada,FWD
 193474,I. Gueye,79,CDM,Senegal,MID
+226677,J. Bacuna,69,CDM,Curaçao,MID
 253304,N. Fernández,71,CM,Uruguay,MID
 235173,I. Sangaré,77,CDM,Ivory Coast,MID
 253133,A. Beck,73,CM,Germany,MID
@@ -2181,6 +2182,7 @@ player_id,short_name,overall,position,nationality,position_group
 250913,B. De Keersmaecker,70,CDM,Belgium,MID
 210724,C. Paterson,68,ST,Scotland,FWD
 191269,S. Al Faraj,69,CM,Saudi Arabia,MID
+233510,T. Chong,71,CAM,Curaçao,MID
 200521,T. Ince,67,CM,England,MID
 247150,A. Vigo,68,RB,Argentina,DEF
 260463,Mario Soriano,73,CAM,Spain,MID
@@ -4349,6 +4351,7 @@ player_id,short_name,overall,position,nationality,position_group
 230399,Michildo Melo,67,LM,Brazil,MID
 271362,Y. Özcan,69,CB,Turkey,DEF
 233986,Jony Reitosa,71,RB,Brazil,DEF
+260098,D. Chirino,69,CB,Curaçao,DEF
 267784,I. Leguizamón,72,LW,Paraguay,FWD
 259105,Pablo Rodríguez,69,CAM,Spain,MID
 238631,L. Schnellbacher,69,ST,Germany,FWD
@@ -4371,6 +4374,7 @@ player_id,short_name,overall,position,nationality,position_group
 276949,Dotor,68,CM,Spain,MID
 203244,Lucas Mendes,70,CB,Qatar,DEF
 258284,T. Pozzo,67,RM,Argentina,MID
+260099,S. Sambo,68,RB,Curaçao,DEF
 73256,Rafa Rodrigues,66,LB,Portugal,DEF
 77359,F. Muñoa,65,CM,Uruguay,MID
 239919,K. Kouao,71,RB,Ivory Coast,DEF
@@ -4450,6 +4454,7 @@ player_id,short_name,overall,position,nationality,position_group
 276258,T. Koudou,68,RB,France,DEF
 239666,T. Müsel,64,CM,Germany,MID
 229171,K. Redondo,67,LM,Germany,MID
+228666,B. Kuwas,67,LM,Curaçao,MID
 180561,H. Al Haydos,71,RM,Qatar,MID
 244843,W. Balikwisha,68,CAM,DR Congo,MID
 212591,W. Zimmerman,75,CB,United States,DEF
@@ -4566,6 +4571,7 @@ player_id,short_name,overall,position,nationality,position_group
 233051,L. Bolton,63,RM,England,MID
 176246,M. Bottani,67,CAM,Switzerland,MID
 276602,A. Ouédraogo,69,CAM,Germany,MID
+233098,S. Floranus,66,RB,Curaçao,DEF
 205966,A. Younes,69,CAM,Germany,MID
 236943,A. Chalá,68,LB,Ecuador,DEF
 241552,J. Italiano,64,LB,Australia,DEF
@@ -4801,6 +4807,7 @@ player_id,short_name,overall,position,nationality,position_group
 225692,M. Bader,71,RB,Germany,DEF
 279453,J. Drinkwater,59,CM,Australia,MID
 259767,T. Aquilina,65,RM,Australia,MID
+79032,T. Noslin,66,RM,Curaçao,MID
 231366,P. Lienhart,79,CB,Austria,DEF
 76488,M. Amarfil,65,CM,Argentina,MID
 247500,Edgar,71,CB,Spain,DEF
@@ -5044,6 +5051,7 @@ player_id,short_name,overall,position,nationality,position_group
 258574,N. Banegas,70,LB,Argentina,DEF
 278035,Mella,71,RM,Spain,MID
 262173,R. Norheim,66,LB,Norway,DEF
+264221,A. Martha,64,LB,Curaçao,DEF
 221982,P. Roberts,72,RM,England,MID
 264488,José Gomes,68,LB,Portugal,DEF
 233770,Kang Yoon Seong,65,RB,South Korea,DEF
@@ -6975,6 +6983,7 @@ player_id,short_name,overall,position,nationality,position_group
 78799,D. Berger,62,ST,Austria,FWD
 212208,L. Galeano,68,CB,Argentina,DEF
 278785,J. Escobar,66,RB,Colombia,DEF
+275206,L. Comenencia,62,RB,Curaçao,DEF
 78354,M. Díaz,61,LM,Ecuador,MID
 80666,Manu Fernández,70,CB,Spain,DEF
 77092,O. Sow,63,ST,Senegal,FWD
@@ -7376,6 +7385,7 @@ player_id,short_name,overall,position,nationality,position_group
 264863,H. Jurado,65,LM,Mexico,MID
 269731,S. Nsimba,65,ST,France,FWD
 244674,O. Urhoghide,69,CB,England,DEF
+79814,T. Mercera,64,RB,Curaçao,DEF
 267465,A. Salama,67,ST,France,FWD
 245982,Choi Byeong Chan,59,RB,South Korea,DEF
 232704,T. Ominami,70,CB,Japan,DEF
@@ -7605,6 +7615,7 @@ player_id,short_name,overall,position,nationality,position_group
 275207,F. Leysen,68,CB,Belgium,DEF
 274442,A. Joujou,69,LM,France,MID
 242958,P. Jaeckel,69,CB,Germany,DEF
+261674,X. Severina,67,LW,Curaçao,FWD
 79660,Z. Shuaib,60,CDM,England,MID
 275262,J. Sticker,63,LB,Germany,DEF
 227655,M. Dugandžić,65,ST,Croatia,FWD
@@ -8628,6 +8639,7 @@ player_id,short_name,overall,position,nationality,position_group
 76873,A. Redkin,59,CM,Sweden,MID
 79690,Gonçalo Oliveira,64,CB,Portugal,DEF
 269150,E. Pye,66,CB,England,DEF
+74337,I. Ahmed,58,CDM,Curaçao,MID
 81519,Rica Rocha,58,CDM,Portugal,MID
 75140,J. Brazete,58,LM,Australia,MID
 80776,J. El Baraka,57,CDM,Morocco,MID
@@ -9102,6 +9114,7 @@ player_id,short_name,overall,position,nationality,position_group
 232757,K. Scott,58,CM,United States,MID
 274486,Marvel,63,CB,Spain,DEF
 274999,K. Okpala,62,ST,Germany,FWD
+274490,R. Rosario,60,LM,Curaçao,MID
 204860,K. Hemmings,60,ST,England,FWD
 78445,V. Lässig,62,CDM,Germany,MID
 268433,K. Franklin,62,RB,Canada,DEF
@@ -10374,6 +10387,7 @@ player_id,short_name,overall,position,nationality,position_group
 259443,T. Velthuis,65,CB,Netherlands,DEF
 73109,A. Faisal,54,LM,Australia,MID
 263874,M. Cvjetinović,65,CB,Germany,DEF
+73433,G. Sambo,57,LW,Curaçao,FWD
 244192,T. Isherwood,67,CB,Sweden,DEF
 238576,Jeong Tae Wook,63,CB,South Korea,DEF
 260380,E. Olsson,65,CB,Sweden,DEF
@@ -12476,6 +12490,7 @@ player_id,short_name,overall,position,nationality,position_group
 71265,P. Argney,60,GK,France,GK
 239203,G. Coudert,66,GK,France,GK
 260978,J. Schenk,71,GK,Germany,GK
+79028,T. Bodak,60,GK,Curaçao,GK
 262931,T. Ernst,69,GK,Germany,GK
 79686,Diogo Ferreira,64,GK,Portugal,GK
 278734,R. León,64,GK,Argentina,GK

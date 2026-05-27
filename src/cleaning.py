@@ -35,7 +35,8 @@ country_mapping = {
     "Czechia": "Czech Republic",
     "Türkiye": "Turkey",
     "IR Iran": "Iran",
-    "Cabo Verde": "Cape Verde"
+    "Cabo Verde": "Cape Verde",
+    "Curacao": "Curaçao"
 }
 
 def clean_results(df):
