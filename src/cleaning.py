@@ -11,13 +11,12 @@ from features import (
 )
 
 # Loading Datasets
-path = kagglehub.dataset_download("martj42/international-football-results-from-1872-to-2017")
-path2 = kagglehub.dataset_download("rovnez/fc-26-fifa-26-player-data")
-dataset_path = Path(path)
-results = pd.read_csv(dataset_path / "results.csv")
-former_names = pd.read_csv(dataset_path / "former_names.csv")
-players = pd.read_csv(Path(path2) / "FC26_20250921.csv")
+path = kagglehub.dataset_download("rovnez/fc-26-fifa-26-player-data")
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+results = pd.read_csv(BASE_DIR / "data" / "results.csv")
+former_names = pd.read_csv(BASE_DIR / "data" / "former_names.csv")
+players = pd.read_csv(Path(path) / "FC26_20250921.csv")
 wc2026_draw = pd.read_csv(BASE_DIR / "data" / "wc2026_draw.csv")
 elo_ratings = pd.read_csv(BASE_DIR / "data" /"fifa_ranking-2026-04-01.csv")
 
