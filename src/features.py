@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+# Match Result -- Target Feature
 def get_match_result(row):
     if row["home_score"] > row["away_score"]:
         return "home_win"
@@ -9,9 +10,11 @@ def get_match_result(row):
     else:
         return "draw"
 
+# Goal Difference
 def goal_diff(row):
     return row["home_score"] - row["away_score"]
 
+# Dictionary of position mappings to group similar positions together
 position_mapping = {
     "GK": "GK",
     "LB": "DEF", 
@@ -27,6 +30,7 @@ position_mapping = {
     "ST": "FWD"
 }
 
+# Function to standardise and simplify position names
 def add_position_group(df):
     df = df.copy()
 
@@ -37,6 +41,7 @@ def add_position_group(df):
 
     return df
 
+# Squad Rating and Top 11 Rating
 def team_rating(players, requirements, rating_name, fill_rating=50):
     
     total_requirements = sum(requirements.values()) 
@@ -80,6 +85,7 @@ def team_rating(players, requirements, rating_name, fill_rating=50):
 
     return pd.DataFrame(team_ratings)
 
+# Tournament Weight
 def assign_tournament_weight(tournament):
     if tournament == "FIFA World Cup":
         return 5
@@ -91,3 +97,5 @@ def assign_tournament_weight(tournament):
         return 1
     else:
         return 2
+    
+# 
