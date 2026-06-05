@@ -97,5 +97,3 @@ def assign_tournament_weight(tournament):
         return 1
     else:
         return 2
-    
-# Elo Features
