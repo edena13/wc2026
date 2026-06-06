@@ -232,28 +232,28 @@ def add_recent_stats(df, latest_team_features):
 
     return df
 
+####################
+## Neutral Ground ##
+####################
+
+def add_neutral(df):
+    df["neutral"] = df["host_advantage"] == 0
+    return df
+
 ############
 ## Master ##
 ############
 
 def create_match_features(df, squad_ratings, top11_ratings, elo_ratings_wc2026, latest_team_features):
-
-    df = add_ratings(
-        df,
-        squad_ratings,
-        top11_ratings
-    )
+    
+    df = add_ratings(df,squad_ratings,top11_ratings)
 
     df = add_host_advantage(df)
 
-    df = add_elo_features(
-        df,
-        elo_ratings_wc2026
-    )
+    df = add_neutral(df)
 
-    df = add_recent_stats(
-        df,
-        latest_team_features
-    )
+    df = add_elo_features(df, elo_ratings_wc2026)
+
+    df = add_recent_stats(df,latest_team_features)
 
     return df
