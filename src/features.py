@@ -144,7 +144,7 @@ def add_tournament_weight(df):
 ###########################
 def add_host_advantage(df):
 
-    df["home_is_host"] = (
+    df["host_advantage"] = (
         (df["home_team"] == df["host_country"]) |
         (df["away_team"] == df["host_country"])
     ).astype(int)
