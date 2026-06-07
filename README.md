@@ -113,6 +113,12 @@ WC2026/
 │   ├── 04_world_cup_simulation.ipynb
 │   └── 05_result_visualisation.ipynb
 │
+├── src/
+│   ├── __init__.py
+│   ├── cleaning.py
+│   ├── features.py
+│   └── simulation.py
+│
 └── README.md
 ```
 
