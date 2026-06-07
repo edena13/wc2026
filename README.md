@@ -6,7 +6,6 @@ This project predicts the FIFA World Cup 2026 using machine learning and Monte C
 
 Historical international football match results were used to train classification models that estimate match outcome probabilities (Home Win, Draw, Away Win). These probabilities were then used to simulate the entire 2026 FIFA World Cup thousands of times to estimate each team's chances of advancing through the tournament and ultimately winning the World Cup.
 
----
 
 ## Objectives
 
@@ -15,26 +14,6 @@ Historical international football match results were used to train classificatio
 * Simulate the FIFA World Cup 2026 tournament structure
 * Estimate advancement and championship probabilities for all participating teams
 
----
-
-## Dataset
-
-### Historical Match Results
-
-* International football matches from 1872–2025
-* Match outcomes, scores, venues and tournament information
-
-### Elo Ratings
-
-* Historical international football Elo ratings
-* Used to measure team strength at the time of each match
-
-### Player Ratings
-
-* Current player ratings collected for all qualified World Cup teams
-* Used to construct squad strength metrics
-
----
 
 ## Data Sources
 
@@ -44,7 +23,6 @@ Historical international football match results were used to train classificatio
 - FIFA World Cup 2026 Draw: self-created
 - Combinations of Round of 32 Matches: Adapted from [Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage)
 
----
 
 ## Feature Engineering
 
@@ -77,7 +55,6 @@ Based on each team's previous 10 matches:
 
 * Whether the home (or away) team is one of the tournament hosts
 
----
 
 ## Models Evaluated
 
@@ -93,7 +70,6 @@ Evaluation metrics:
 * Macro F1 Score
 * Weighted F1 Score
 
----
 
 ## Tournament Simulation
 
@@ -119,7 +95,6 @@ The simulation also estimates the probability of each team reaching:
 * Final
 * Champion
 
----
 
 ## Project Structure
 
@@ -140,7 +115,6 @@ WC2026/
 │
 └── README.md
 ```
----
 
 ## Technologies Used
 
