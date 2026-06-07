@@ -14,11 +14,11 @@ from features import (
 path = kagglehub.dataset_download("rovnez/fc-26-fifa-26-player-data")
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-results = pd.read_csv(BASE_DIR / "data" / "results.csv")
-former_names = pd.read_csv(BASE_DIR / "data" / "former_names.csv")
+results = pd.read_csv(BASE_DIR / "data" / "raw" / "results.csv")
+former_names = pd.read_csv(BASE_DIR / "data" / "raw" / "former_names.csv")
 players = pd.read_csv(Path(path) / "FC26_20250921.csv")
-wc2026_draw = pd.read_csv(BASE_DIR / "data" / "wc2026_draw.csv")
-elo_ratings = pd.read_csv(BASE_DIR / "data" /"fifa_ranking-2026-04-01.csv")
+wc2026_draw = pd.read_csv(BASE_DIR / "data" / "raw" / "wc2026_draw.csv")
+elo_ratings = pd.read_csv(BASE_DIR / "data" / "raw" / "fifa_ranking-2026-04-01.csv")
 
 # List of countries in WC2026
 wc2026_countries = wc2026_draw["country"].unique().tolist()
