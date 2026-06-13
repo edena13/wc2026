@@ -369,6 +369,7 @@ def run_monte_carlo(
     rows = []
     stage_counts = {
         "r32": {},
+        "r16": {},
         "quarter_final": {},
         "semi_final": {},
         "final": {},
@@ -410,18 +411,26 @@ def run_monte_carlo(
 
         add_count("champion", champion)
 
+        # Reached Round of 32
         for team in pd.concat([
             result["standings"][result["standings"]["position"].isin([1, 2])]["country"],
             result["best_third"]["country"],
         ]):
             add_count("r32", team)
 
+        # Reached Round of 16
+        for match_id in range(73, 89):
+            add_count("r16", result["winners"][match_id])
+
+        # Reached Quarter-Finals
         for match_id in range(89, 97):
             add_count("quarter_final", result["winners"][match_id])
 
+        # Reached Semi-Finals
         for match_id in range(97, 101):
             add_count("semi_final", result["winners"][match_id])
 
+        # Reached Final
         for match_id in [101, 102]:
             add_count("final", result["winners"][match_id])
 
