@@ -48,6 +48,9 @@ def clean_results(df):
     # Removing rows that have NA values in critical columns
     df = df.dropna(subset=["home_team", "away_team", "home_score", "away_score"])
 
+    # Keep to results before the 2026 FIFA World Cup kicked off
+    df = df[df["date"] < "2026-06-11"]
+
     # Converting home_score and away_score to integers
     df["home_score"] = df["home_score"].astype(int)
     df["away_score"] = df["away_score"].astype(int)
