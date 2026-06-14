@@ -52,6 +52,7 @@ Main Libraries:
 * Matplotlib
 * Seaborn
 
+
 This project was developed with the assistance of several AI coding tools:
 
 | Tool | Usage |
@@ -74,8 +75,8 @@ All visualisations, modelling decisions, feature engineering, data preparation, 
 
 ## Data Cleaning
 
-* Standardised Country Names 
-* Removed Invalid Records
+* Standardised country names 
+* Removed invalid records
 
 
 ## Exploratory Data Analysis (EDA)
