@@ -41,28 +41,30 @@ WC2026/
 └── README.md
 ```
 
-## Technologies Used
+## How to Run
 
-Main Libraries:
-* Python
-* Pandas
-* NumPy
-* Scikit-Learn
-* XGBoost
-* Matplotlib
-* Seaborn
+1. Clone the repository
 
+```bash
+git clone https://github.com/yourusername/WC2026.git
+cd WC2026
+```
 
-This project was developed with the assistance of several AI coding tools:
+2. Install dependencies
 
-| Tool | Usage |
-|--------|--------|
-| ChatGPT | General debugging, feature engineering discussions, model development, and project design |
-| Codex | Implementing and refactoring the tournament simulation pipeline |
-| Claude | Data visualisation implementation, hyperparameter tuning |
+```bash
+pip install -r requirements.txt
+```
 
-All visualisations, modelling decisions, feature engineering, data preparation, and evaluation were reviewed and validated manually.
+3. Run the notebooks in order
 
+```text
+01_data_cleaning_eda.ipynb
+02_feature_engineering.ipynb
+03_model_training.ipynb
+04_world_cup_simulation.ipynb
+05_result_visualisation.ipynb
+```
 
 ## Data Sources
 
@@ -70,7 +72,7 @@ All visualisations, modelling decisions, feature engineering, data preparation, 
 - Player Ratings [FC 26 (FIFA 26) Player Data](https://www.kaggle.com/datasets/rovnez/fc-26-fifa-26-player-data/data) 
 - Elo Ratings: [Elo Ratings 1992-2024](https://www.kaggle.com/datasets/cashncarry/fifaworldranking/discussion/681592)
 - FIFA World Cup 2026 Draw: Self-created CSV based on FIFA's official fixtures
-- Combinations of Round of 32 Matches: Adapted from [Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage)
+- Combinations of Round of 32 Matches: Self-created CSV adapted from [Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_knockout_stage)
 
 
 ## Data Cleaning
@@ -175,3 +177,45 @@ The simulation also estimates the probability of each team reaching:
 * Semi-Finals
 * Final
 * Champion
+
+## Results
+
+### Most Likely World Cup Winners (10,000 Simulations)
+
+| Rank | Team | Championship Probability |
+|------|------|-------------------------:|
+| 1 | Spain | 10.18% |
+| 2 | Argentina | 9.61% |
+| 3 | France | 8.72% |
+| 4 | England | 6.89% |
+| 5 | Netherlands | 4.84% |
+| 6 | Portugal | 4.82% |
+| 7 | Brazil | 4.50% |
+| 8 | Colombia | 3.82% |
+| 9 | Croatia | 3.57% |
+| 10 | Norway | 3.46% |
+
+Spain emerged as the most likely champion, followed by Argentina and France. These results are broadly consistent with many pre-tournament predictions and betting markets for the 2026 FIFA World Cup. However, no team exceeded an 11% chance of winning the tournament, due to the highly competitive and uncertain nature of the World Cup and the large number of teams.
+
+
+## Development Tools
+
+Main Libraries:
+* Python
+* Pandas
+* NumPy
+* Scikit-Learn
+* XGBoost
+* Matplotlib
+* Seaborn
+
+This project was developed with the assistance of several AI coding tools:
+
+| Tool | Usage |
+|--------|--------|
+| ChatGPT | General debugging, feature engineering discussions, model development, and project design |
+| GitHub Copilot | Code completion, refactoring, and implementation support within VSCode |
+| Codex | Implementing and refactoring the tournament simulation pipeline |
+| Claude | Data visualisation implementation, hyperparameter tuning |
+
+All visualisations, modelling decisions, feature engineering, data preparation, and evaluation were reviewed and validated manually.
